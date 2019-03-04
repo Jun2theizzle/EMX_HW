@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports.hello = async (event, context) => {
+module.exports.emx = async (event, context) => {
   let body = "";
 
   const q = event.queryStringParameters.q;
@@ -20,7 +20,6 @@ module.exports.hello = async (event, context) => {
   }
 
   if (q == 'Puzzle') {
-    console.log(event.queryStringParameters);
     body = doPuzzle(event.queryStringParameters.d);
   }
 
@@ -49,7 +48,7 @@ module.exports.hello = async (event, context) => {
   }
 
   if (q == 'Resume') {
-    body = 'https://github.com/Jun2theizzle/EMX_HW';
+    body = 'https://github.com/Jun2theizzle/EMX_HW/blob/master/Johnny%20Cheng%20Resume%20Current%20-%20Google%20Docs.pdf';
   }
 
   return {
@@ -61,7 +60,6 @@ module.exports.hello = async (event, context) => {
 
 function doPuzzle(queryString) {
   let fixed = queryString.replace('Please solve this puzzle:\n ABCD\n', '');
-  console.log(fixed);
   const input = fixed.split('\n');
   const A = input[0];
   const B = input[1];
@@ -100,7 +98,6 @@ function doPuzzle(queryString) {
   }
 
   const res = concatTable(table);
-  console.log(res);
   return res;
 }
 
